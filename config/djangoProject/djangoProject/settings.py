@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-1p&+8)$$sfpj*2k%7)8xtxr356k%9^%0nnxiv1&qn^9+1+xo%v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
     'widget_tweaks',
-    "core.login.apps.LoginConfig"
+    "core.login.apps.LoginConfig",
+    "core.user",
+    "core.reports",
+
 ]
 
 MIDDLEWARE = [
@@ -118,6 +121,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR / "static"),
 ]
@@ -133,3 +138,5 @@ LOGIN_URL = '/login/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
+AUTH_USER_MODEL = 'user.User'
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

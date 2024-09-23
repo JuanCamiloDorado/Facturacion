@@ -10,10 +10,10 @@
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{% static 'lib/adminlite-3.2.0/img/avatar.png' %}" class="img-circle elevation-2" alt="User Image">
+                <img src="{{ request.user.get_image }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{ request.user.username }}</a>
+                <a href="{% url 'core:dashboard' %}" class="d-block">{{ request.user.username }}</a>
             </div>
         </div>
         <nav class="mt-2">
@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{% url 'core:client_list' %}" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Clientes
@@ -44,10 +44,26 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{% url 'core:sale_list' %}" class="nav-link">
                         <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>
                             Ventas
+                        </p>
+                     </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'sale_report' %}" class="nav-link">
+                        <i class="nav-icon fas fa-chart-bar"></i>
+                        <p>
+                            Reporte de Ventas
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'user:user_list' %}" class="nav-link">
+                        <i class="nav-icon fas fa-user-friends"></i>
+                        <p>
+                            Usuarios
                         </p>
                     </a>
                 </li>
