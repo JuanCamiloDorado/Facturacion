@@ -1,0 +1,45 @@
+{
+  "name": "pos-restaurantes",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "npm run build && vite preview",
+    "deploy": "cross-env CLOUDFLARE_ENV=production vite build && wrangler deploy",
+    "typecheck": "tsc -b",
+    "test": "vitest run",
+    "db:generate": "drizzle-kit generate --config drizzle.control.config.ts && drizzle-kit generate --config drizzle.tenant.config.ts",
+    "db:setup": "node scripts/dev-setup.mjs",
+    "tenant:create": "node scripts/tenant-create.mjs",
+    "cf-typegen": "wrangler types src/worker/worker-configuration.d.ts"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.9.1",
+    "@tanstack/react-query": "^5.105.3",
+    "drizzle-orm": "^0.45.4",
+    "hono": "^4.13.16",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router": "^7.18.5",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.67.0",
+    "@cloudflare/vitest-plugin": "^1.5.1",
+    "@tailwindcss/vite": "^4.3.4",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "cross-env": "^10.1.0",
+    "drizzle-kit": "^0.31.11",
+    "jsonc-parser": "^3.3.1",
+    "tailwindcss": "^4.3.4",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.7",
+    "vitest": "^4.1.12",
+    "wrangler": "^4.157.0"
+  }
+}

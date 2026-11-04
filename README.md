@@ -27,3 +27,9 @@ Este proyecto es un **sistema de facturación** que permite gestionar ventas, cl
 - **Framework**: Django / Bootstrap
 - **Base de datos**: PostgreSQL
 - **Frontend**: HTML, CSS, JavaScript
+
+## Nueva versión: POS para restaurantes (`pos/`)
+
+En la carpeta [`pos/`](pos/README.md) está la nueva versión del sistema: un POS para restaurantes, multitenant,
+hecho en TypeScript sobre Cloudflare Workers y D1. Va a reemplazar por fases a esta versión en Django.
+Las instrucciones para correrla están en [`pos/README.md`](pos/README.md).

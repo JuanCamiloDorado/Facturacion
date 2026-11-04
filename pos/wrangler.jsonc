@@ -1,0 +1,52 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pos-restaurantes",
+  "main": "./src/worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "observability": { "enabled": true },
+  // Desarrollo local. Cada cliente (tenant) tiene su propia base D1;
+  // la base de control guarda qué binding usa cada uno.
+  // `npm run tenant:create` agrega aquí las bases nuevas.
+  "vars": {
+    "BASE_DOMAIN": "localhost",
+    "DEFAULT_TENANT": "demo"
+  },
+  "d1_databases": [
+    {
+      "binding": "CONTROL_DB",
+      "database_name": "pos-control",
+      "database_id": "local-pos-control",
+      "migrations_dir": "migrations/control"
+    },
+    {
+      "binding": "TENANT_DEMO",
+      "database_name": "pos-tenant-demo",
+      "database_id": "local-pos-tenant-demo",
+      "migrations_dir": "migrations/tenant"
+    }
+  ],
+  "env": {
+    // Producción: `npm run deploy`. Los bindings no se heredan, así que
+    // las bases de producción se listan aparte. `npm run tenant:create -- --remote`
+    // agrega aquí cada cliente nuevo.
+    "production": {
+      "vars": {
+        "BASE_DOMAIN": "CAMBIAR-dominio-del-pos.com",
+        "DEFAULT_TENANT": ""
+      },
+      "d1_databases": [
+        {
+          "binding": "CONTROL_DB",
+          "database_name": "pos-control",
+          "database_id": "CAMBIAR-id-de-pos-control",
+          "migrations_dir": "migrations/control"
+        }
+      ]
+    }
+  }
+}
