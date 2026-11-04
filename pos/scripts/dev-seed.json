@@ -1,0 +1,27 @@
+{
+  "_nota": "Solo para desarrollo local. Nunca uses estas claves en producción.",
+  "tenantName": "Restaurante Demo",
+  "password": "demo-local-123",
+  "users": [
+    { "name": "Admin Demo", "email": "admin@demo.local", "role": "admin" },
+    { "name": "Carla Cajera", "email": "cajero@demo.local", "role": "cajero" },
+    { "name": "Mario Mesero", "email": "mesero@demo.local", "role": "mesero" }
+  ],
+  "sedes": ["Sede Centro", "Sede Norte"],
+  "menu": {
+    "Entradas": [
+      ["Empanadas x3", 9000],
+      ["Patacón con hogao", 12000]
+    ],
+    "Platos fuertes": [
+      ["Bandeja paisa", 32000],
+      ["Ajiaco santafereño", 28000],
+      ["Mojarra frita", 35000]
+    ],
+    "Bebidas": [
+      ["Limonada de coco", 9500],
+      ["Jugo natural", 7000],
+      ["Gaseosa", 5000]
+    ]
+  }
+}
